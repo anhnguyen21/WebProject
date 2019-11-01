@@ -26,7 +26,7 @@
                     <div class="collapse navbar-collapse"></div>
                     <div class="collapse navbar-collapse" id="navbarmenu">
                         <ul class="navbar-nav mr-auto">
-                            <li class="nav-item">
+                            <li class="nav-item" onclick="backHome()">
                                 <a href="#" class="nav-link">Home</a>
                             </li>
                             <li class="nav-item">
@@ -41,6 +41,9 @@
                         <form class="form-inline my-2 my-lg-0">
                             <button onclick="cart()" class="btn btn-secondary menu-right-btn boder" type="button">
                                 Cart
+                            </button>
+                            <button onclick="login()" class="btn btn-secondary menu-right-btn boder" type="button">
+                                User
                             </button>
                         </form>
                     </div>
@@ -191,17 +194,19 @@
 
     </div>
 
-    <div id="detai">
+    <div id="detai" style="display: none;">
         <div class="detail_contain">
             <div class="detail_grow1">
                 <div class="img_flex">
-                    <span><img src="images/page2_img8.jpg" alt="" style="width: 100px; height: 100px;"></span>
-                    <span><img src="images/page2_img8.jpg" alt="" style="width: 100px; height: 100px;"></span>
-                    <span><img src="images/page2_img8.jpg" alt="" style="width: 100px; height: 100px;"></span>
+                    <span><img class="showImg" src="images/page2_img8.jpg" alt="" style="width: 100px; height: 100px;"></span>
+                    <span> <img class="showImg" src="images/page2_img6.jpg" alt="" style="width: 100px; height: 100px;"></span>
+                    <span><img class="showImg" src="images/page2_img8.jpg" alt="" style="width: 100px; height: 100px;"></span>
                 </div>
             </div>
             <div class="detail_grow2">
-                <span><img src="images/page2_img8.jpg" alt="" style="width: 380px; height: 500px;"></span>
+                <button class="arrow_left" onclick="next(-1)"><i class="fas fa-arrow-circle-left"></i></button>
+                <span><img class="showImg1" src="images/page2_img8.jpg" alt=""></span>
+                <button class="arrow_right" onclick="next(1)"><i class="fas fa-arrow-circle-right"></i></button>
             </div>
             <div class="detail_grow3">
                 <div class="contai_flex">
@@ -213,7 +218,11 @@
         </div>
     </div>
 
-
+    <div id="login">
+        <div class="log">
+            dfsfsfsdfsdf
+        </div>
+    </div>
 
     <!-- ==============================footer================================= -->
     <footer>
@@ -273,6 +282,8 @@
                 </div>
             </div> -->
     </footer>
+
+
 
 </body>
 

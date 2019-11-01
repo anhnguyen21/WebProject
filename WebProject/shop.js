@@ -19,6 +19,27 @@ var data = {
     ]
 }
 
+var dataTouris = {
+    login: [
+        { user: 'anh', password: '1234', address: 'quang tri', email: 'anh@gmail.com', brithday: '10-10-199' },
+        { user: '123', password: '1234', address: 'quang tri', email: 'anh@gmail.com', brithday: '10-10-199' },
+        { user: 'anh1', password: '1234', address: 'quang tri', email: 'anh@gmail.com', brithday: '10-10-199' },
+        { user: 'anh2', password: '1234', address: 'quang tri', email: 'anh@gmail.com', brithday: '10-10-199' },
+        { user: 'anh3', password: '1234', address: 'quang tri', email: 'anh@gmail.com', brithday: '10-10-199' },
+        { user: 'anh4', password: '1234', address: 'quang tri', email: 'anh@gmail.com', brithday: '10-10-199' },
+    ],
+    location: [
+        { name: 'New Zealand', price: 1.2, img: 'images/page2_img1.jpg', adrr: 'Copacabana Beach, Rio de Janeiro' },
+        { name: 'Goa', price: 1.5, img: 'images/page2_img2.jpg', adrr: 'Copacabana Beach, Rio de Janeiro' },
+        { name: 'France', price: 1.6, img: 'images/page2_img3.jpg', adrr: 'Copacabana Beach, Rio de Janeiro' },
+        { name: 'Canada', price: 200, img: 'images/page2_img4.jpg', adrr: 'Copacabana Beach, Rio de Janeiro' },
+        { name: 'Turkey', price: 1.5, img: 'images/page2_img5.jpg', adrr: 'Copacabana Beach, Rio de Janeiro' },
+        { name: 'Egypt', price: 1.2, img: 'images/page2_img6.jpg', adrr: 'Copacabana Beach, Rio de Janeiro' },
+        { name: 'Japan', price: 1.2, img: 'images/page2_img7.jpg', adrr: 'Copacabana Beach, Rio de Janeiro' },
+        { name: 'Braxil', price: 1.7, img: 'images/page2_img8.jpg', adrr: 'Copacabana Beach, Rio de Janeiro' }
+    ]
+}
+
 var arr = [];
 
 function login1() {
@@ -89,33 +110,50 @@ function add(j) {
     console.log(arr);
 }
 
+function backHome() {
+    var a = document.getElementById('cont');
+    var b = document.getElementById('detai');
+    var c = document.getElementById('cart');
+    a.style.display = 'block';
+    b.style.display = 'none';
+    c.style.display = 'none';
+}
+
+function Detail(j) {
+    if (j == 7) {
+        var a = document.getElementById('cont');
+        var b = document.getElementById('detai');
+        a.style.display = 'none';
+        b.style.display = 'block';
+    }
+}
+
+function login() {
+
+}
+
+var position = 0;
+
+function next(i) {
+    position = position + i;
+    console.log(position);
+    if (position == 0) {
+        document.getElementByClassName('showImg1').src = 'images/page2_img8.jpg';
+    }
+    if (position == 1) {
+        document.getElementsByClassName('showImg1').src = 'images/page2_img8.jpg';
+    }
+    if (position == 2) {
+        document.getElementsByClassName('showImg1').src = 'images/page2_img6.jpg';
+    }
+    if (position == 3) {
+        document.getElementsByClassName('showImg1').src = 'images/page2_img8.jpg';
+    }
+
+}
+
 function deleteTable(index) {
     arr.splice(index, 1);
     console.log("1");
     cart();
-}
-
-function listProduct() {
-    document.getElementById("displayIn").innerHTML = '';
-    for (i = 0; i < arr.length; i++) {
-        var box = document.createElement("div");
-        box.className = "box";
-        var name = document.createElement("span");
-        name.innerHTML = 'Name:' + arr[i].name;
-        var price = document.createElement("span");
-        price.innerHTML = 'Price: ' + arr[i].price;
-        var oldPrice = document.createElement("span");
-        oldPrice.innerHTML = 'OldPrice: ' + arr[i].oldprice;
-        var type = document.createElement("span");
-        type.innerHTML = 'Gender: ' + arr[i].type;
-        var img = document.createElement("img");
-        img.className = "image";
-        img.src = arr[i].image;
-        box.appendChild(name);
-        box.appendChild(price);
-        box.appendChild(oldPrice);
-        box.appendChild(type);
-        box.appendChild(img);
-        document.getElementById("displayIn").appendChild(box);
-    }
 }
