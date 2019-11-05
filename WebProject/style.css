@@ -24,7 +24,6 @@
 }
 
 .top1 {
-    
     width: 1200px;
     margin: auto;
 }
@@ -32,6 +31,7 @@
 .nav-link {
     font-size: 20px;
 }
+
 
 /* .collapse {
     position: fixed;
@@ -184,7 +184,7 @@ td {
     align-items: center;
 }
 
-.cart_img{
+.cart_img {
     width: 50px;
     height: 10px;
 }
@@ -288,4 +288,22 @@ button {
     height: 100vh;
     top: 0;
     right: -400px;
+}
+
+
+/* ============== addProductCustomer ============= */
+
+#addPro {
+    width: 1200px;
+    margin: auto;
+}
+
+.addSP {
+    margin-left: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form {
+    display: flex;
 }

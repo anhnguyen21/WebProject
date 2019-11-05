@@ -204,60 +204,86 @@
     <!-- ================================= Manager ========================================= -->
 
     <div id="manager" style="display: none;">
-        <section class="addSP col-12">
-            <div class="container" id="insert">
-                <h2>Thêm thông tin sản phẩm</h2>
-                <form action="" class="row" onsubmit="addData(); return false;">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#" onclick="add()">Add<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Edit</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">statistical</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Disabled</a>
+                    </li>
+                </ul>
             </div>
-            <div class="form-group col-6">
-                <p>Name</p>
-                <input id="nten" name="nten" value="" class="form-control">
-            </div>
-            <div class="form-group col-6">
-                <p>Price($)</p>
-                <input id="ngia" type="number" value="" class="form-control">
-            </div>
-            <div class="form-group col-6">
-                <p>address</p>
-                <input id="ndiachi" type="text" value="" class="form-control">
-            </div>
-            <div class="form-group col-6">
-                <p>Khuyến mãi</p>
-                <input id="nkhuyenmai" type="number" value="" class="form-control">
-            </div>
-            <div class="form-group col-12">
-                <label class="col-sm-3 col-form-label">Chọn hình ảnh</label>
-                <input type="file" class="form-control-file" id="nanh">
-            </div>
-            <div class="form-group col-12">
-                <button class="btn btn-primary" onclick="showData()">Thêm Sản Phẩm</button>
-            </div>
-            </form>
-        </section>
-        <section id="list" class="p-5">
-            <div class="container">
-                <!-- <div class="btn_next">
+        </nav>
+
+
+        <div id="addPro">
+            <section class="addSP col-12">
+                <div class="container" id="insert">
+                    <h2>Thêm thông tin sản phẩm</h2>
+                    <form action="" class="row" onsubmit="addData(); return false;">
+                </div>
+                <div class="form">
+                    <div class="form-group col-4">
+                        <p>Name</p>
+                        <input id="nameadd" name="nten" value="" class="form-control">
+                    </div>
+                    <div class="form-group col-4">
+                        <p>Price($)</p>
+                        <input id="priceadd" type="number" value="" class="form-control">
+                    </div>
+                </div>
+                <div class="form">
+                    <div class="form-group col-4">
+                        <p>address</p>
+                        <input id="adreadd" type="text" value="" class="form-control">
+                    </div>
+                    <div class="form-group col-4">
+                        <p>Khuyến mãi</p>
+                        <input id="nkhuyenmai" type="number" value="" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group col-12">
+                    <label class="col-sm-3 col-form-label">Chọn hình ảnh</label>
+                    <input type="file" class="form-control-file" id="nanh">
+                </div>
+                <div class="form-group col-12">
+                    <button class="btn btn-primary" onclick="showData()">Thêm Sản Phẩm</button>
+                </div>
+                </form>
+            </section>
+            <section id="list" class="p-5">
+                <div class="container">
+                    <!-- <div class="btn_next">
                 <a href="admin_AddSp.html" class="btn btn-primary">Thêm Sản Phẩm</a>
               </div> -->
 
-                <div id="list" class="pt-4">
-                    <table class="table table-hover table-bordered" id="listData">
-                        <tr class="table-primary table-header">
-                            <!-- <thead class="table-primary"> -->
-                            <th>id</th>
-                            <th>Loại dịch vụ</th>
-                            <th>Tên LUXSTAY</th>
-                            <th>Ảnh</th>
-                            <th>Giá dịch vụ</th>
-                            <th>Giá cũ</th>
-                            <th>Khuyến mãi</th>
-                            <!-- </thead> -->
-                        </tr>
+                    <div id="list" class="pt-4">
+                        <table class="table table-hover table-bordered" id="listData">
+                            <tr class="table-primary table-header">
+                                <!-- <thead class="table-primary"> -->
+                                <th>id</th>
+                                <th>Name Product</th>
+                                <th>Price</th>
+                                <th>Img</th>
+                                <th>Address</th>
+                                <th>Delete</th>
+                                <!-- </thead> -->
+                            </tr>
 
-                    </table>
+                        </table>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
     </div>
 
 

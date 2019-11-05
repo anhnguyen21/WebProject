@@ -25,6 +25,7 @@ localStorage.setItem('session', JSON.stringify(dataTouris.location));
 var localCart = JSON.parse(localStorage.getItem('session'));
 var localName = JSON.parse(localStorage.getItem('sessionNa'));
 var localCartN = JSON.parse(localStorage.getItem('sessionN'));
+var localAdd = JSON.parse(localStorage.getItem('sessionadd'));
 
 var arr = new Array();
 var arrUser = new Array();
@@ -36,42 +37,41 @@ function login1() {
     var nameLogin;
     if (localName != null) {
         arrUser = localName;
-        var name = document.getElementById("defaultForm-email").value;
-        var pass = document.getElementById("defaultForm-pass").value;
-
-        for (var i = 0; i < arrUser.length; i++) {
-            if (arrUser[i].name == name && arrUser[i].pass == pass) {
-                console.log(arrUser[i].id);
-                kt = true;
-                nameLogin = 'customer :' + arrUser[i].name;
-                idLogin = arrUser[i].id;
-                break;
-
-            }
-        }
-        for (var i = 0; i < dataTouris.login.length; i++) {
-            if (dataTouris.login[i].user == name && dataTouris.login[i].password == pass) {
-                kt = true;
-                document.getElementById("manager").style.display = 'block';
-                document.getElementById("cont").style.display = 'none';
-                nameLogin = 'manger :' + dataTouris.login[i].user;
-                alert("ban da dang nhap vao manager!");
-                break;
-
-            }
-        }
-
     }
+    console.log(arrUser);
+    var name = document.getElementById("defaultForm-email").value;
+    var pass = document.getElementById("defaultForm-pass").value;
+
+    for (var i = 0; i < arrUser.length; i++) {
+        if (arrUser[i].name == name && arrUser[i].pass == pass) {
+            console.log(arrUser[i].id);
+            kt = true;
+            nameLogin = 'customer :' + arrUser[i].name;
+            idLogin = arrUser[i].id;
+            break;
+
+        }
+    }
+    for (var i = 0; i < dataTouris.login.length; i++) {
+        if (dataTouris.login[i].user == name && dataTouris.login[i].password == pass) {
+            kt = true;
+            document.getElementById("manager").style.display = 'block';
+            document.getElementById("cont").style.display = 'none';
+            document.getElementById("cart").style.display = 'none';
+            list();
+            nameLogin = 'manger :' + dataTouris.login[i].user;
+            alert("ban da dang nhap vao manager!");
+            break;
+
+        }
+    }
+
     if (kt == true) {
         alert("ban da dang nhap thanh cong");
         document.getElementById("userlogin").innerHTML = nameLogin;
     } else {
         alert("ban da dang nhap that bai");
     }
-}
-
-function retu(id) {
-    return id;
 }
 
 function regist() {
@@ -123,14 +123,17 @@ function cart() {
     var tbl = document.getElementById("tbl");
     if (localCartN != null) {
         tbl1();
+        arr = localCartN;
+        // localCartN = arr;
     }
     if (arr.length == 0) {
         document.getElementById('tbl').innerHTML = "";
         tbl1();
         arr = localCartN;
     }
-    for (var i = 0; i < localCartN.length; i++) {
-        if (localCartN[i] != null && localCartN[i].id == idLogin) {
+    console.log(arr);
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] != null && arr[i].iduser == idLogin) {
             var row = tbl.insertRow();
             var cellid = row.insertCell();
             var cellname = row.insertCell();
@@ -139,15 +142,17 @@ function cart() {
             var cellquantity = row.insertCell();
             var celldelete = row.insertCell();
             cellid.innerHTML = i + 1;
-            cellname.innerHTML = localCartN[i].name;
-            cellimg.innerHTML = '<div><img src="' + localCartN[i].img + '" style="width: 80px; height: 80px;"></div>';
-            cellprice.innerHTML = localCartN[i].price;
-            cellquantity.innerHTML = localCartN[i].quantity;
+            cellname.innerHTML = arr[i].name;
+            cellimg.innerHTML = '<div><img src="' + arr[i].img + '" style="width: 80px; height: 80px;"></div>';
+            cellprice.innerHTML = arr[i].price;
+            cellquantity.innerHTML = arr[i].quantity;
             celldelete.innerHTML = '<button onclick="deleteTable(' + i + ')" class="btn btn-danger">Xoa</button>';
         }
     }
-    sum(localCartN);
-    total(localCartN);
+    if (arr != null) {
+        sum(localCartN);
+        total(localCartN);
+    }
 }
 
 function add(j) {
@@ -157,45 +162,57 @@ function add(j) {
         alert('ban chua dang nhap nen chua them duoc');
     }
     var kt = -1;
-    if (localCartN != null && ktlog == true) {
+    console.log(ktlog);
+    if (localCartN != null) {
         arr = localCartN;
-        console.log(localCartN.length);
-        for (var i = 0; i < localCartN.length; i++) {
-
-            if (localCartN[i].name == dataTouris.location[j].name && localCartN[i].id == idLogin) {
-                console.log(arr[i]);
-                console.log(dataTouris.location[j].name);
-                var quan;
-                arr[i].quantity = arr[i].quantity + 1;
-                // localCartN[i].quantity = localCartN[i].quantity + 1;
-                localStorage.setItem('sessionN', JSON.stringify(arr));
-                kt = 1;
-            }
+    }
+    // console.log(localCartN.length);
+    console.log(arr);
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i].name == dataTouris.location[j].name && arr[i].id == idLogin) {
+            console.log(arr[i]);
+            console.log(dataTouris.location[j].name);
+            arr[i].quantity = arr[i].quantity + 1;
+            // localCartN[i].quantity = localCartN[i].quantity + 1;
+            localStorage.setItem('sessionN', JSON.stringify(arr));
+            kt = 1;
+            break;
         }
 
     }
     if (kt == -1 & ktlog == true) {
         for (var i = 0; i < dataTouris.location.length; i++) {
             if (i == j) {
-                console.log(idLogin);
-                arr.push({ name: dataTouris.location[j].name, price: dataTouris.location[j].price, img: dataTouris.location[j].img, adrr: dataTouris.location[j].adrr, quantity: 1, id: idLogin });
+                var temp = {
+                    name: dataTouris.location[j].name,
+                    price: dataTouris.location[j].price,
+                    img: dataTouris.location[j].img,
+                    adrr: dataTouris.location[j].adrr,
+                    quantity: 1,
+                    iduser: idLogin
+                };
+                arr.push(temp);
                 localStorage.setItem('sessionN', JSON.stringify(arr));
                 console.log(arr);
             }
         }
     }
-    sum(localCartN);
-    total(localCartN);
-    return localCartN;
+    if (arr != null) {
+        sum(localCartN);
+        total(localCartN);
+        return localCartN;
+    }
 }
 
 function backHome() {
     var a = document.getElementById('cont');
     var b = document.getElementById('detai');
     var c = document.getElementById('cart');
+    var d = document.getElementById('manager');
     a.style.display = 'block';
     b.style.display = 'none';
     c.style.display = 'none';
+    d.style.display = 'none';
 }
 
 function Detail(j) {
@@ -207,10 +224,10 @@ function Detail(j) {
     }
 }
 
-var position = 0;
-
 function deleteTable(index) {
-    arr = localCartN;
+    if (localCartN != null) {
+        arr = localCartN;
+    }
     console.log(index);
     arr.splice(index, 1);
     console.log(arr);
@@ -223,15 +240,20 @@ function deleteTable(index) {
 // sum in
 function sum(localCartN) {
     var s = 0;
-    for (i = 0; i < localCartN.length; i++) {
-        s = s + localCartN[i].quantity * localCartN[i].price;
+    if (localCartN != null) {
+        arr = localCartN;
+    }
+    for (i = 0; i < arr.length; i++) {
+        if (arr[i].id = idLogin) {
+            s = s + arr[i].quantity * arr[i].price;
+        }
     }
     document.getElementById("sumCart").innerHTML = s + '$';
     return s;
 }
 
 function total(localCartN) {
-    var tota = sum(localCartN) * 0.5;
+    var tota = sum(localCartN) * 0.95;
     document.getElementById("totalcar").innerHTML = tota + '$';
 }
 
@@ -239,31 +261,33 @@ function inCart() {
     alert('ban da thanh toan');
 }
 
-// function list() {
-//     var tbl = document.getElementById("listData");
-//     if (localCartN != null) {
-//         tbl1();
-//     }
-//     if (arr.length == 0) {
-//         document.getElementById('tbl').innerHTML = "";
-//         tbl1();
-//         arr = localCartN;
-//     }
-//     for (var i = 0; i < localCartN.length; i++) {
-//         if (localCartN[i] != null) {
-//             var row = tbl.insertRow();
-//             var cellid = row.insertCell();
-//             var cellname = row.insertCell();
-//             var cellimg = row.insertCell();
-//             var cellprice = row.insertCell();
-//             var cellquantity = row.insertCell();
-//             var celldelete = row.insertCell();
-//             cellid.innerHTML = i + 1;
-//             cellname.innerHTML = localCartN[i].name;
-//             cellimg.innerHTML = '<div><img src="' + localCartN[i].img + '" style="width: 80px; height: 80px;"></div>';
-//             cellprice.innerHTML = localCartN[i].price;
-//             cellquantity.innerHTML = localCartN[i].quantity;
-//             celldelete.innerHTML = '<button onclick="deleteTable(' + i + ')" class="btn btn-danger">Xoa</button>';
-//         }
-//     }
-// }
+function list() {
+    var tbl = document.getElementById("listData");
+    console.log(dataTouris.location);
+    for (var i = 0; i < dataTouris.location.length; i++) {
+        var row = tbl.insertRow();
+        var cellid = row.insertCell();
+        var cellname = row.insertCell();
+        var cellprice = row.insertCell();
+        var cellimg = row.insertCell();
+        var cellAddrees = row.insertCell();
+        var celldelete = row.insertCell();
+        cellid.innerHTML = i + 1;
+        cellname.innerHTML = dataTouris.location[i].name;
+        cellimg.innerHTML = '<div><img src="' + dataTouris.location[i].img + '" style="width: 80px; height: 80px;"></div>';
+        cellprice.innerHTML = dataTouris.location[i].price;
+        cellAddrees.innerHTML = dataTouris.location[i].adrr;
+        celldelete.innerHTML = '<button onclick="deleteTable(' + i + ')" class="btn btn-danger">Xoa</button>';
+    }
+}
+
+function addProduct() {
+    var name = document.getElementById("nameadd").value;
+    var price = document.getElementById("priceadd").value;
+    var pass = document.getElementById("orangeForm-pass").value;
+    var img = document.getElementById("imgadd").value;
+    if (localAdd != null) {
+        dataTouris.location = localAdd;
+    }
+    localStorage.setItem('sessionadd', JSON.stringify(dataTouris.location));
+}
