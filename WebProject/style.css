@@ -2,13 +2,10 @@
     padding: 0;
     margin: 0;
 }
-
-
 /* body {
     width: 1200px;
     margin: auto;
 } */
-
 .body {
     display: flex;
     margin-left: 100px;
@@ -17,40 +14,17 @@
     padding: 10px 10px 10px;
     flex-direction: column;
 }
-
 .top {
     background: cadetblue;
     text-align: center;
 }
-
 .top1 {
     width: 1200px;
     margin: auto;
 }
-
 .nav-link {
     font-size: 20px;
 }
-
-
-/* .collapse {
-    position: fixed;
-    z-index: 1100;
-    background-color: transparent;
-    width: 100%;
-    height: 84px;
-    top: 40px;
-    left: 0px;
-} */
-
-
-/* .sticky {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    background-color: #ffffff;
-} */
-
 .grid-container {
     width: 1400px;
     margin: auto;
@@ -58,24 +32,20 @@
     grid-template-columns: auto auto auto;
     padding: 10px;
 }
-
 .grid-item {
     background-color: rgba(255, 255, 255, 0.8);
     padding: 20px;
     font-size: 30px;
     text-align: center;
 }
-
 .grid-item image {
     width: 200px;
     height: 106px;
 }
-
 .banner {
     margin-top: 20px;
     position: relative;
 }
-
 .banner .label {
     color: #fff;
     position: absolute;
@@ -86,7 +56,6 @@
     right: 0;
     text-transform: uppercase;
 }
-
 .banner .label a {
     text-decoration: none;
     font-size: 20px;
@@ -94,12 +63,9 @@
     border: oldlace;
     background: oldlace;
 }
-
 .footer {
     background: #222222;
 }
-
-
 /* .contain_flex {
     display: flex;
     width: 1200px;
@@ -107,7 +73,6 @@
     padding: auto;
     justify-content: space-between;
 } */
-
 .grid-footer {
     width: 1400px;
     margin: auto;
@@ -115,52 +80,38 @@
     grid-template-columns: auto auto auto auto;
     /* padding: 10px; */
 }
-
 .grid-itemfooter {
     margin-top: 30px;
     color: #bbb;
     font-size: 20px;
     margin-left: 110px;
 }
-
 .text-foot {
     margin-top: 10px;
     font-size: 15px;
 }
-
 .foot {
     background-color: white;
 }
-
 .inp-foot {
     margin-bottom: 40px;
     text-align: center;
 }
-
-
 /* cart list */
-
 #cart {
     margin-bottom: 80px;
 }
-
 .container1 {
     width: 1000px;
     margin: auto;
     display: flex;
 }
-
-table,
-tr,
-th,
-td {
+table,tr,th,td {
     border: none;
 }
-
 #tbl tr {
     height: 50px;
 }
-
 #tbl tr th {
     background: #f5f7fa;
     flex: 0 0 25%;
@@ -171,28 +122,23 @@ td {
     text-transform: capitalize;
     font-weight: 400;
 }
-
 #tbl tr td {
     text-align: left;
     padding-left: 10px;
 }
-
 #tbl {
     margin-top: 40px;
     margin-right: 60px;
     flex-grow: 2;
     align-items: center;
 }
-
 .cart_img {
     width: 50px;
     height: 10px;
 }
-
 button {
     display: inline-block;
 }
-
 .right_cart {
     width: 300px;
     margin-top: 40px;
@@ -203,34 +149,26 @@ button {
     margin-bottom: 10px;
     margin-right: 20px;
 }
-
 .summary-table {
     display: flex;
     flex-direction: column;
 }
-
 .right_cart ul {
     list-style: none;
     text-decoration: none;
 }
-
-
 /*---------------Detail----------------*/
-
 #detai {
     width: 1000px;
     margin: 0 auto;
 }
-
 .detail_grow3 {
     width: 380px;
 }
-
 .detail_grow2 {
     position: relative;
     width: 380px;
 }
-
 .detail_grow1 {
     width: 120px;
     /* display: flex;
@@ -238,21 +176,18 @@ button {
     height: 400px;
     justify-content: space-between; */
 }
-
 .img_flex {
     display: flex;
     flex-direction: column;
     height: 400px;
     justify-content: space-between;
 }
-
 .detail_contain {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
     margin-top: 20px;
 }
-
 .arrow_left {
     font-size: 25px;
     color: #fff;
@@ -262,7 +197,6 @@ button {
     height: 40px;
     background-color: rgba(0, 0, 0, 0.5);
 }
-
 .arrow_right {
     font-size: 25px;
     color: #fff;
@@ -273,12 +207,10 @@ button {
     height: 40px;
     background-color: rgba(0, 0, 0, 0.5);
 }
-
 .showImg1 {
     width: 380px;
     height: 500px;
 }
-
 .log {
     background: olive;
     position: fixed;
@@ -289,21 +221,28 @@ button {
     top: 0;
     right: -400px;
 }
-
-
 /* ============== addProductCustomer ============= */
-
 #addPro {
     width: 1200px;
     margin: auto;
 }
-
 .addSP {
     margin-left: 100px;
     display: flex;
     flex-direction: column;
 }
-
 .form {
     display: flex;
+}
+/* ======================search===================== */
+.search{
+    display: flex;
+    text-align: center;
+    margin-bottom: 20px;
+    align-items: center;
+}
+.inpSearch{
+    width: 300px;
+    height: 30px;
+    border-radius: 3px;
 }

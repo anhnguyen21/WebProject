@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title>Hot Tours</title>
     <link rel="stylesheet" href="style.css">
@@ -12,7 +11,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
-
 <body>
     <!--==============================header=================================-->
     <header>
@@ -170,10 +168,7 @@
             </div>
         </div>
     </div>
-
     <!-- ==============================cart================================= -->
-
-
     <div id="cart" style="display: none;" onload="cart()">
         <div class="container1">
             <table id="tbl" class="table table-borderless">
@@ -199,37 +194,30 @@
         </div>
 
     </div>
-
-
     <!-- ================================= Manager ========================================= -->
-
     <div id="manager" style="display: none;">
-
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#" onclick="add()">Add<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="#" onclick="addPro()">Add<span class="sr-only"></span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Edit</a>
+                        <a class="nav-link" href="#" onclick="listProduct()">List Product</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">statistical</a>
+                        <a class="nav-link" href="#" onclick="listCart()">List Cart</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" href="#">Disabled</a>
+                        <a class="nav-link" href="#" onclick="searchCart()">Search</a>
                     </li>
                 </ul>
             </div>
         </nav>
-
-
         <div id="addPro">
-            <section class="addSP col-12">
+            <section class="addSP col-12" id="addP">
                 <div class="container" id="insert">
                     <h2>Thêm thông tin sản phẩm</h2>
-                    <form action="" class="row" onsubmit="addData(); return false;">
                 </div>
                 <div class="form">
                     <div class="form-group col-4">
@@ -253,42 +241,72 @@
                 </div>
                 <div class="form-group col-12">
                     <label class="col-sm-3 col-form-label">Chọn hình ảnh</label>
-                    <input type="file" class="form-control-file" id="nanh">
+                    <input type="file" class="form-control-file" id="imgadd">
                 </div>
                 <div class="form-group col-12">
-                    <button class="btn btn-primary" onclick="showData()">Thêm Sản Phẩm</button>
+                    <button class="btn btn-primary" onclick="addProduct()">Thêm Sản Phẩm</button>
                 </div>
-                </form>
             </section>
-            <section id="list" class="p-5">
+            <section id="list1" class="p-5" style="display: none;">
                 <div class="container">
-                    <!-- <div class="btn_next">
-                <a href="admin_AddSp.html" class="btn btn-primary">Thêm Sản Phẩm</a>
-              </div> -->
-
                     <div id="list" class="pt-4">
                         <table class="table table-hover table-bordered" id="listData">
                             <tr class="table-primary table-header">
                                 <!-- <thead class="table-primary"> -->
                                 <th>id</th>
-                                <th>Name Product</th>
+                                <th>Name addrees</th>
                                 <th>Price</th>
                                 <th>Img</th>
-                                <th>Address</th>
-                                <th>Delete</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
                                 <!-- </thead> -->
                             </tr>
-
                         </table>
                     </div>
                 </div>
             </section>
+            <section id="listCart1" class="p-5" style="display: none;">
+                <div class="container">
+                    <div id="list" class="pt-4">
+                        <table class="table table-hover table-bordered" id="listDataCart">
+                            <tr class="table-primary table-header">
+                                <!-- <thead class="table-primary"> -->
+                                <th>id</th>
+                                <th>Name Product</th>
+                                <th>Name Customer</th>
+                                <th>Img</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Delete</th>
+                                <!-- </thead> -->
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            <div class="search" id="search" style="display: none;">
+                <span><input type="text" class="inpSearch" placeholder="Search this blog" id="isearch">
+                    <button class="btn btn-secondary" onclick="sear()" type="button">
+                        <i class="fa fa-search"></i>
+                      </button>
+                </span>
+                <table class="table table-hover table-bordered" id="listDataCartSea">
+                    <tr class="table-primary table-header">
+                        <!-- <thead class="table-primary"> -->
+                        <th>id</th>
+                        <th>Name Product</th>
+                        <th>Name Customer</th>
+                        <th>Img</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Edit</th>
+                        <!-- </thead> -->
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
-
-
     <!-- =========================================== detail ============================================= -->
-
     <div id="detai" style="display: none;">
         <div class="detail_contain">
             <div class="detail_grow1">
@@ -335,13 +353,6 @@
             </div>
         </div>
     </div>
-
-    <div id="login">
-        <div class="log">
-            dfsfsfsdfsdf
-        </div>
-    </div>
-
     <!-- ==============================footer================================= -->
     <footer>
         <div class="footer">
@@ -386,19 +397,6 @@
                 </div>
             </div>
             <hr>
-            <!-- <div class="input-group">
-                <input type="text" class="form-control" aria-label="Text input with dropdown button">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                        <div role="separator" class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Separated link</a>
-                    </div>
-                </div>
-            </div> -->
     </footer>
     <!--============== Sign in ==========================-->
     <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -407,8 +405,8 @@
                 <div class="modal-header text-center">
                     <h4 class="modal-title w-100 font-weight-bold ">Sign in</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body mx-3">
                     <div class="md-form mb-5">
@@ -430,18 +428,15 @@
             </div>
         </div>
     </div>
-
-
     <!--=========================== Sign Up ==============================-->
-
     <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header text-center">
                     <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body mx-1">
                     <div class="md-form mb-1">
@@ -473,5 +468,34 @@
             </div>
         </div>
     </div>
-
+    <!-- =================Edit======================== -->
+    <div class="modal fade modalEditClass" id="modalEdit" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header text-center">
+              <h4 class="modal-title w-100 font-weight-bold text-secondary ml-5">Edit form</h4>
+              <button type="button" class="close text-secondary" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body mx-3">
+              <div class="md-form mb-5">
+                <input type="text" id="formNameEdit" class="form-control validate">
+                <label data-error="wrong" data-success="right" for="formNameEdit">Name</label>
+              </div>
+  
+              <div class="md-form mb-5">
+                <input type="text" id="formPositionEdit" class="form-control validate">
+                <label data-error="wrong" data-success="right" for="formPositionEdit">Quantity</label>
+              </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-center editInsideWrapper">
+              <button class="btn btn-outline-secondary btn-block editInside" data-dismiss="modal">Edit
+                form
+                <i class="fas fa-paper-plane-o ml-1"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
 </html>
